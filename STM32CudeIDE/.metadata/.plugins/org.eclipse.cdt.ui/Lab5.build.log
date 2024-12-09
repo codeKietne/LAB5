@@ -1,0 +1,43 @@
+01:09:34 **** Incremental Build of configuration Debug for project LAB5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/fsm_command_parser.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_command_parser.d" -MT"Core/Src/fsm_command_parser.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_command_parser.o"
+arm-none-eabi-gcc "../Core/Src/fsm_uart_communication.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_uart_communication.d" -MT"Core/Src/fsm_uart_communication.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_uart_communication.o"
+../Core/Src/fsm_uart_communication.c: In function 'uart_communication_fsm':
+../Core/Src/fsm_uart_communication.c:24:51: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+   24 |    HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "\r\n"), 1000);
+      |                                                   ^~~
+      |                                                   |
+      |                                                   uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/fsm_uart_communication.c:10:
+c:\stm32\stm32cubeide_1.7.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346\tools\arm-none-eabi\include\stdio.h:244:14: note: expected 'char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  244 | int sprintf (char *__restrict, const char *__restrict, ...)
+      |              ^
+../Core/Src/fsm_uart_communication.c:34:50: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+   34 |   HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "!ADC=%lu#\r\n", ADC_value), 1000);
+      |                                                  ^~~
+      |                                                  |
+      |                                                  uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/fsm_uart_communication.c:10:
+c:\stm32\stm32cubeide_1.7.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346\tools\arm-none-eabi\include\stdio.h:244:14: note: expected 'char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  244 | int sprintf (char *__restrict, const char *__restrict, ...)
+      |              ^
+arm-none-eabi-gcc -o "LAB5.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\TAI_LIEU\HK_7\MicronProcessor_MicroController\Lab\MCU_MPU\Microcontroller-Microprocessor\LAB5-main\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LAB5.elf
+ 
+arm-none-eabi-size   LAB5.elf 
+arm-none-eabi-objdump -h -S  LAB5.elf  > "LAB5.list"
+arm-none-eabi-objcopy  -O ihex  LAB5.elf  "LAB5.hex"
+   text	   data	    bss	    dec	    hex	filename
+  15784	    124	   1868	  17776	   4570	LAB5.elf
+arm-none-eabi-objcopy  -O binary  LAB5.elf  "LAB5.bin"
+Finished building: default.size.stdout
+ 
+Finished building: LAB5.hex
+Finished building: LAB5.bin
+ 
+ 
+Finished building: LAB5.list
+ 
+
+01:09:35 Build Finished. 0 errors, 2 warnings. (took 1s.22ms)
+
